@@ -7,7 +7,7 @@ filetype indent on
 set history=1000
 set showmatch
 set matchtime=0
-set shortmess=atI
+set shortmess=atIOt
 set ruler
 set showcmd
 
@@ -58,6 +58,9 @@ imap ij <esc>
 " Quick timeouts on key combinations.
 set timeoutlen=300 
 
+"Search highlighted text
+vnoremap // y/<C-R>"<CR>
+
 ":nmap : q:i
 ":nmap / q/i
 ":nmap ? q?i
@@ -65,26 +68,27 @@ set timeoutlen=300
 " Who needs .gvimrc?
 if has('gui_running')
   set encoding=utf-8
-  "set guifont=Monospace\ Bold\ 9
-  set guifont=Bitstream\ Vera\ Sans\ Mono\ 8
+  set guifont=Consolas:h10
+  "set guifont=Bitstream\ Vera\ Sans\ Mono\ 12
   " Turn off toolbar and menu
-  " set guioptions-=T
-  " set guioptions-=m
+  set guioptions-=T
+  "set guioptions-=m
   colorscheme desert
 else
+  set guifont=Consolas:h10
   colorscheme desert
 end
 
 " Lusty
 "let g:LustyJugglerShowKeys = 2
-let g:LustyExplorerSuppressRubyWarning = 1
-let g:LustyExplorerFileMasks = "*.o,*.fasl"
-nmap <silent> <Leader>f :FilesystemExplorer<CR>
-nmap <silent> <Leader>b :BufferExplorer<CR>
-nmap <silent> <Leader>r :FilesystemExplorerFromHere<CR>
-nmap <silent> <Leader>g :LustyJuggler<CR>
-nmap <silent> <Leader>j :so ~/.vim/plugin/lusty-explorer.vim<CR>
-nmap <silent> <TAB> :JugglePrevious<CR>
+"let g:LustyExplorerSuppressRubyWarning = 1
+"let g:LustyExplorerFileMasks = "*.o,*.fasl"
+"nmap <silent> <Leader>f :FilesystemExplorer<CR>
+"nmap <silent> <Leader>b :BufferExplorer<CR>
+"nmap <silent> <Leader>r :FilesystemExplorerFromHere<CR>
+"nmap <silent> <Leader>g :LustyJuggler<CR>
+"nmap <silent> <Leader>j :so ~/.vim/plugin/lusty-explorer.vim<CR>
+"nmap <silent> <TAB> :JugglePrevious<CR>
 
 " Window management
 "nmap <silent> <Leader>xo :wincmd j<CR>
@@ -106,8 +110,8 @@ nnoremap ` '
 " Buffer management
 nmap <C-h> :bp<CR>
 nmap <C-l> :bn<CR>
-"nmap <TAB> :b#<CR>
-"nmap <C-q> :bd<CR>
+nmap <TAB> :b#<CR>
+nmap <C-q> :bd<CR>
 nmap <C-d> :bw<CR>
 
 " Toggle highlighting
@@ -129,6 +133,11 @@ autocmd BufRead *.qcf set filetype=lisp
 autocmd BufRead qpx.inc set filetype=make
 autocmd BufRead letter* set filetype=mail
 autocmd Filetype mail set fo -=l autoindent spell
+autocmd BufRead,BufNewFile *.scene setfiletype json
+autocmd BufRead,BufNewFile *.World setfiletype json
+autocmd BufRead,BufNewFile *.StaticMesh setfiletype json
+autocmd BufRead,BufNewFile *.OcclusionMesh setfiletype json
+autocmd BufRead,BufNewFile *.Beam setfiletype json
 
 " ITA indenting style
 "autocmd Filetype c,cpp,h set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
@@ -136,7 +145,7 @@ autocmd Filetype mail set fo -=l autoindent spell
 "autocmd Filetype c,cpp,h set tabstop=8 softtabstop=4 shiftwidth=4 noexpandtab
 " Wimba indenting style, sort-of
 "autocmd Filetype c,cpp,h 
-set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 " Viewglob
 "autocmd Filetype c,cpp,h,sh set cindent autoindent
 
