@@ -138,7 +138,13 @@ autocmd BufRead,BufNewFile *.World setfiletype json
 autocmd BufRead,BufNewFile *.StaticMesh setfiletype json
 autocmd BufRead,BufNewFile *.OcclusionMesh setfiletype json
 autocmd BufRead,BufNewFile *.Beam setfiletype json
-
+autocmd FileType markdown |
+      \hi def link markdownItalic              NONE |
+      \hi def link markdownItalicDelimiter     NONE |
+      \hi def link markdownBold                NONE |
+      \hi def link markdownBoldDelimiter       NONE |
+      \hi def link markdownBoldItalic          NONE |
+      \hi def link markdownBoldItalicDelimiter NONE
 " ITA indenting style
 "autocmd Filetype c,cpp,h set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 " JSH indenting style
